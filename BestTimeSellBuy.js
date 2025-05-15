@@ -3,16 +3,20 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-    let profit = [];
+    let price = prices[0];
+    let profit = 0;
     for (let i = 0; i < prices.length; i++) {
-        let calc = [];
-        for (let j = i + 1; j < prices.length; j++) {
-            calc.push(prices[j] - prices[i]);
+        if (prices[i] < price) {
+            price = prices[i];
+        } else if (prices[i] - price > profit) {
+            profit = prices[i] - price;
         }
-        let sorted = calc.toSorted((a, b) => b - a);
-        profit.push(sorted[0]);
     }
-    const max = profit.toSorted((a, b) => b - a);
-    return max[0] > 0 ? max[0] : 0;
-
+    return profit;
 };
+
+let result = maxProfit([7, 1, 5, 3, 6, 4]);
+console.log(result);
+
+result = maxProfit([7, 6, 4, 3, 1]);
+console.log(result);
