@@ -14,5 +14,4 @@ var maxProfit = function (prices) {
     }
     const max = profit.toSorted((a, b) => b - a);
     return max[0] > 0 ? max[0] : 0;
-
 };
