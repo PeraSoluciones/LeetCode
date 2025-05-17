@@ -4,14 +4,10 @@
  * @return {number[]}
  */
 var intersection = function (nums1, nums2) {
-    const output = new Array();
-    for (let i = 0; i < nums2.length; i++) {
-        for (let j = 0; j < nums1.length; j++) {
-            if (nums2[i] === nums1[j] && !output.includes(nums2[i]))
-                output.push(nums2[i]);
-        }
-    }
-    return output;
+    const set1 = new Set(nums1);
+    const set2 = new Set(nums2);
+
+    return [...set1].filter((el) => set2.has(el));
 };
 
 console.log(intersection([1, 2, 2, 1], [2, 2]));
